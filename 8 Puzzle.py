@@ -63,6 +63,7 @@ def first_goal(board):
         m1 , n1 = find(board , 1)
         print(m ,n)
         right(board , 0,0)
+        print (board)
         leng = m1
         for i in range(leng):
             board = up(board ,  m, n)
