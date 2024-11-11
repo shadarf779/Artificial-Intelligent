@@ -1,9 +1,16 @@
 #8 Puzzle Challenge with out assistent of AI
 
+#First Goad get the 0 to the [1 , 1 ]
+#Second Goal get 1 to the [0],[0] 
 
-#First Goal in 8 Puzzle try to get 1 to the [0],[0] 
+board = [
+        [0 , 2 , 3],
+        [4 , 1 , 5],
+        [7 , 8 , 6]
+    ]
 
-def find(board , value):
+def find(value):
+    global board
     m=0
     n=0
     for i in board:
@@ -29,6 +36,7 @@ def up(board , m , n):
         return None
 def right(board , m , n):
     if(board[m][n]==0):
+
         board[m][n] = board[m][n+1] 
         board[m][n+1] =0
         return board
@@ -42,63 +50,55 @@ def down(board , m , n):
         return board
     else:
         return None
-def take_the_empty_cell_to00(board,m,n):
-    leng = m
-    for i in range(leng):
-        board = up(board ,  m, n)
-        m= m -1
-    leng = n
-    for j in range(leng):
-        board = left(board , m , n)
-        n = n-1
-def first_goal(board):
-    if(board[0][0] == 1):
-        return (board[0][0])
-    else:
-        m , n = find(board , 0)
-        print(m ,n)
-        take_the_empty_cell_to00(board,m,n)
-        print (board)
+def take_the_value_to11(m,n):
+    global board
+    if(m>1):
+        up(board ,m ,n)
+        m=m-1
+    elif(m<1):
+        down(board , m , n)
+        m=m+1
+    if(n>1):
+        left(board , m , n)
+        n=n-1
+    elif(n<1):
+        right(board , m , n)
+        n=n+1
+    return  board
         
-        m1 , n1 = find(board , 1)
+
+
+#first Goal
+def first_goal():
+    global board
+    if(board[1][1] == 0):
+        return (board[1][1])
+    else:
+        m , n = find(0)
         print(m ,n)
-        right(board , 0,0)
+        board = take_the_value_to11(m,n)
         print (board)
-        leng = m1
-        for i in range(leng):
-            board = up(board ,  m, n)
-            m= m -1
-        leng = n1
-        for j in range(leng):
-            board = left(board , m , n)
-            n = n-1
+    return (board[1][1])
+        # m1 , n1 = find(board , 1)
+        # print(m ,n)
+        # right(board , 0,0)
+        # print (board)
+        # leng = m1
+        # for i in range(leng):
+        #     board = up(board ,  m, n)
+        #     m= m -1
+        # leng = n1
+        # for j in range(leng):
+        #     board = left(board , m , n)
+        #     n = n-1
 
 
-        return board[0][0]
+        # return board[0][0]
 
        
 
-# Assert is 1 in the [0][0]?
+# First Goal Should be Done 
 
-assert first_goal(
-board = [
-        [1 , 2 , 3],
-        [4 , 0 , 5],
-        [7 , 8 , 6]
-    ]
-) == 1
-assert first_goal(
-board = [
-        [2 , 1 , 3],
-        [4 , 5 , 6],
-        [7 , 0 , 8]
-    ]
-) == 1
+assert first_goal() == 0
 
-# assert first_goal(
-# board = [
-#         [2 , 3 , 1],
-#         [4 , 5 , 6],
-#         [7 , 8 , 0]
-#     ]
-# ) == 1
+
