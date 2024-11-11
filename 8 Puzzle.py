@@ -1,4 +1,4 @@
-#8 Puzzle Challenge with out AI
+#8 Puzzle Challenge with out assistent of AI
 
 
 #First Goal in 8 Puzzle try to get 1 to the [0],[0] 
