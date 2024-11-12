@@ -5,9 +5,9 @@
 #third Goal get 1 to the [0],[0] 
 
 board = [
-        [2 , 6 , 1],
+        [2 , 8 , 1],
         [4 , 0 , 5],
-        [7 , 8 , 3]
+        [7 , 6 , 3]
     ]
 
 def find(value):
@@ -260,6 +260,66 @@ def seventh_goal():
         print(x ,y)
         take_2_to_next_3(x,y)
     return ([board[0][1] , board[0][2]])
+
+def eighth_goal():
+    global board
+    if(board[1][0] == 7):
+        return (board[1][0])
+    else:
+        m , n = find(7)
+        print(m ,n)
+        x,y = find(0)
+        take_0_to_near_value(m,n,x,y)
+    return board[0][2]
+
+def ninth_goal():
+    global board
+    if(board[1][1] == 4):
+        return (board[1][1])
+    else:
+        m , n = find(4)
+        print(m ,n)
+        x,y = find(0)
+        take_0_to_near_value(m,n,x,y)
+    return board[1][1]
+
+def fix_4_and_7(x,y):
+    global board
+    print (x,y)
+    down(x,y)
+    x=x+1
+    left(x,y)
+    y=y-1
+    left(x,y)
+    y=y-1
+    up(x,y)
+    x=x-1
+    right(x,y)
+    y=y+1
+
+def tenth_goal():
+    global board
+    if(board[1][0] == 4 and board[2][0]==7):
+        return ([board[1][0] , board[2][0]])
+    else:
+        x , y = find(0)
+        print(x ,y)
+        fix_4_and_7(x,y)
+    print(board)
+    return ([board[1][0] , board[2][0]])
+def final_goal():
+    global board
+    if(board[2][2] == 0):
+        return (board[2][2])
+    else:
+        m , n = find(0)
+        print(m ,n)
+        right(m,n)
+        n=n+1
+        down(m,n)
+        m=m+1
+        print (board)
+    return (board[2][2])
 assert first_goal() == 0
 
 
@@ -278,6 +338,20 @@ assert first_goal() == 0
 assert sixth_goal() == 2
 
 assert seventh_goal() == [2,3]
+
+assert first_goal() == 0
+
+assert eighth_goal() == 7
+
+assert ninth_goal() == 4
+
+assert tenth_goal() == [4,7]
+
+assert final_goal() == 0
+
+for i in board:
+        print(i)
+print("All Goals are Done")
 
 
 
