@@ -353,11 +353,3 @@ for i in board:
         print(i)
 print("All Goals are Done")
 
-
-
-
-
-
-
-
-
