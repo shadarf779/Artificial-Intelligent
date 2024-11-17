@@ -320,6 +320,9 @@ def final_goal():
         m=m+1
         print (board)
     return (board[2][2])
+
+
+
 assert first_goal() == 0
 
 

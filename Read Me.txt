@@ -1,0 +1,83 @@
+
+# 8 Puzzle Challenge (Without AI Assistance)
+# Author: Shad arf
+# Date: 2024-11-14
+#project implement without using ChatGPT and other AI Assistance
+© 2024 https://github.com/shadarf779 - All rights reserved
+
+
+This project solves the 8-puzzle challenge without the use of AI algorithms or libraries. The goal is to sequentially move the tiles to arrange the numbers in a particular order, using only basic functions and logic to achieve each step.
+
+
+Puzzle Board
+The board is represented as a 3x3 grid, where each cell contains a number from 1 to 8, with one cell empty (represented by 0). Here is the initial board setup:
+
+board = [
+    [2, 8, 1],
+    [4, 0, 5],
+    [7, 6, 3]
+]
+
+Objective
+The objective is to move the tiles such that they match the following configuration:
+
+goal_board = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 0]
+]
+
+Steps to Achieve the Solution
+The program is designed to meet specific goals in sequence, moving the empty cell (0) and arranging numbers to reach the desired final state.
+
+Goals
+Each function targets a specific goal to move tiles step-by-step toward the final configuration. Here’s the breakdown:
+
+First Goal: Move the empty cell (0) to the center of the board at position [1,1].
+Second Goal: Move 0 to the Next of the cell (1).
+Third Goal: Move 1 to the top-left corner [0,0].
+Fourth Goal: Move 0 to the Next of the cell (3).
+Fifth Goal: Move 3 to the position, [0,1].
+Sixth Goal: Move 2 to the position, [1,1].
+Seventh Goal: Place 2 next to 1, achieving [0,1] == 2 and [0,2] == 3.
+Eighth Goal: Position 7 at [1,0].
+Ninth Goal: Place 4 at [1,1].
+Tenth Goal: Place 4 up to 7, achieving [1,0] == 4 and [2,0] == 7.
+Final Goal: Move the remaining numbers into their correct places, finishing with 0 in the bottom-right [2,2].
+Each goal is verified with assertions to ensure accuracy.
+
+Functions and Movement
+The program uses several helper functions to move tiles and locate specific values:
+
+find(value): Finds the position (m, n) of a specific value on the board.
+Movement Functions:
+left(m, n): Moves 0 to the left, swapping it with the adjacent tile.
+right(m, n): Moves 0 to the right.
+up(m, n): Moves 0 up.
+down(m, n): Moves 0 down.
+These functions help move the empty tile (0) to achieve each goal incrementally.
+
+Goal Functions
+Each goal has a dedicated function (first_goal, second_goal, etc.), which finds and places each number step-by-step. The goal functions are structured as follows:
+
+def first_goal():
+    if board[1][1] == 0:
+        return board[1][1]
+    else:
+        m, n = find(0)
+        take_the_empity_value_to11(m, n)
+    return board[1][1]
+
+Each function checks if the board meets the goal’s requirement; if not, it adjusts the board by moving the empty cell to achieve that state.
+
+Final Verification
+The program verifies the success of each goal with assertions:
+
+assert first_goal() == 0
+assert second_goal() == 0
+assert third_goal() == 1
+and so on...
+
+At the end, the board should match the goal configuration, and a message "All Goals are Done" will be printed.
+
+
