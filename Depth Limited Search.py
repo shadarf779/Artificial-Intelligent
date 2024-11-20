@@ -10,11 +10,11 @@ def dfs(graph, start, dest,dl):
     visited = list()
     queue = list()
     queue.append(start)
-    counter = 0
+    depth = 0
     while queue:
         currentNode = queue.pop()
-        print(counter)
-        counter = counter + 1
+        print(depth)
+        depth = depth + 1
         if currentNode not in graph.keys():
             continue
 
@@ -24,14 +24,14 @@ def dfs(graph, start, dest,dl):
             result[0] = "Reachable"
             break
         if  (graph[currentNode] == ['']):
-            counter -= 2
-        if counter <= dl:
+            depth -= 2
+        if depth <= dl:
             for node in graph[currentNode]:
                 if node not in graph.keys():
                     continue
                 queue.append(node)
         else:
-            counter -= 1
+            depth -= 1
  
     result[1] = visited
     return result
